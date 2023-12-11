@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: End points of the transactions
+  description: |- 
+    End points of the transactions on the Openclassrooms Project named ArgentBank.
+  servers:
+   - url: http://localhost:3001/aendpoint-swagger/#/
+  tags:
+   - name: transactions
+     description: Transactions of this user
+     externalDocs: 
+        description: Find out more
+        url: http://swagger.io 
+   - name: details of transactions
+     description: details
+     externalDocs: 
+        description: Find out more
+        url: http://swagger.io 
+paths:
+  /transactions:
+    get:
+      tags:
+        - transactions
+      summary: Retrieve infos of the past transactions
+      description: Retrieve infos of the past transactions
+      operationId: getTransactions
+      requestBody:
+        description: retrieve an existing transaction list
+        content:
+          application/json:
+            schema:
+              $ref: '#/transactions'
+          application/xml:
+            schema:
+              $ref: '#/transactions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/transactions'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/transactions'          
+            application/xml:
+              schema:
+                $ref: '#/transactions'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Transactions not found
+        '405':
+          description: Validation exception
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+components:
+  schemas:
+    Transactions:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+          example: "shopping shoes"
+        amount:
+          type: number
+          format: double
+          example: 10000.50
+        balance:
+          type: number
+          format: double
+          example: 10000.50
+      xml:
+        name: transactions

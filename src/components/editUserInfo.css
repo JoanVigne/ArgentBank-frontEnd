@@ -1,0 +1,21 @@
+#editUserInfoForm {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  width: min(80%, 330px);
+  margin: 0 auto;
+}
+
+#editUserInfoForm label {
+  text-align: end;
+}
+
+#editUserInfoForm input[type="text"] {
+  min-height: 20px;
+  max-width: 130px;
+}
+#editUserInfoForm .edit-button {
+  margin-top: 20px;
+}
